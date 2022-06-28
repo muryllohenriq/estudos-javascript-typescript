@@ -14,10 +14,17 @@
 <body>
     <script>
         var nome = window.prompt('Qual é o seu nome?')
+        window.confirm('Está gostando de JS?')
         window.alert('é um grande prazer em te conhecer, ' + nome + '!')
         document.write(`Olá, <strong>${nome}</strong>! Seu nome tem ${nome.length} letras.<br/> `)
         document.write(`Seu nome em maiúsculas é ${nome.toUpperCase()}<br/>`)
         document.write(`Seu nome em minúsculas é ${nome.toLowerCase()}`)
+        var n1 = Number(window.prompt('Digite um número: '))
+        var n2 = Number(window.prompt('Digite outro número: '))
+        var s = n1 + n2
+        window.alert(`A soma entre ${n1} e ${n2} é igual a ${s}`) 
+        // (number + number) = para adiçao
+        // (string + string) = para concatenaçãou
     </script>
 </body>
 </html>

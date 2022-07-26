@@ -19,3 +19,11 @@ do {
     c = c + 4
 } while (c <= 20)
 */
+
+/* for 
+console.log('Vai começar...')
+for(var c = 1;c <= 4;c++) {
+    console.log(c)
+}
+console.log('FIM!')
+*/

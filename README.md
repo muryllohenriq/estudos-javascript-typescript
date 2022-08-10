@@ -1,3 +1,3 @@
 # Curso de JavaScript.
 ***
- Curso de JavaScript do CursoemVídeo
+ Estudos em JavaScript englobando diversos cursos e estudos autodidata

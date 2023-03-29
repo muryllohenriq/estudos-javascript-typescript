@@ -1,0 +1,41 @@
+.container {
+  background-color: red;
+}
+
+h1 {
+  color: white;
+}
+
+ul.minha-lista {
+  list-style-type: nome;
+  background-color: gray;
+}
+ul.minha-lista li {
+  margin: 0;
+  padding: 0;
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  color: black;
+}
+
+a:active {
+  color: gray;
+}
+
+p::first-line {
+  color: green;
+  font-variant: small-caps;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+}
+
+/*# sourceMappingURL=style.css.map */

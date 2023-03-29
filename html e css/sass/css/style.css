@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-bar {
+  background-color: #84e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-bar .brand {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;
+}
+.nav-bar .nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.nav-bar .nav-list .nav-item a {
+  margin: 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.nav-bar .nav-list .nav-item a:hover {
+  color: #333;
+}
+
+/*# sourceMappingURL=style.css.map */

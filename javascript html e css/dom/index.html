@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando com JS</title>
+</head>
+<body>
+    <h1>Iniciando a contagem</h1>
+    <button onclick="contagem()">Bora Contar</button>
+    <section id="resposta">
+        <p>Resultado tá aqui</p>
+    </section>
+    <script>
+    function contagem(){
+    for(let num = 1; num <= 20; num++){
+        resposta.innerHTML += num + ' '
+    }
+}
+    </script>
+</body>
+</html>

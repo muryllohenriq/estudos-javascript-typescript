@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário</title>
+  </head>
+  <body>
+    <main role="main">
+      <!--method="post" para não expor os dados-->
+      <form action="#" method="post" role="form">
+        <label for="campo1">Nome</label>
+        <input type="text" name="nome" id="campo1" />
+
+        <label for="campo2">Interesses de Estudo</label>
+        <select name="interesses" id="campo2">
+          <option value="1">Vendas</option>
+          <option value="2">Marketing</option>
+        </select>
+
+        <fieldset>
+          <legend>Interesses de Estudo</legend>
+
+          <label for="campo3.1">Vendas</label>
+          <input type="radio" name="interesse2" value="1" id="campo3.1" />
+
+          <label for="campo3.2">Marketing</label>
+          <input type="radio" name="interesse2" value="2" id="campo3.2" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Interesses de Estudo 2</legend>
+
+          <label for="campo4.1">Vendas</label>
+          <input type="checkbox" name="interesse3" value="1" id="campo4.1" />
+
+          <label for="campo4.2">Marketing</label>
+          <input type="checkbox" name="interesse3" value="2" id="campo4.2" />
+        </fieldset>
+
+        <input type="submit" value="Enviar o formulário" />
+      </form>
+    </main>
+  </body>
+</html>

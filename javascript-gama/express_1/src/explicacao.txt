@@ -1,0 +1,37 @@
+View = 
+- Monta uma resposta em tela para a request enviada
+- Tudo relacionando a interface fica nessa camada
+- A view não consegue receber request, e só é acionada pelo controller
+- Não é obrigatório está no mesmo projeto (API)
+
+Controller =
+- Recebe uma request
+- Trata a request solicitando informações do models se necessário
+- Devolve uma resposta para a view respondendo a request
+
+Model = 
+- Aqui deve ficar toda a camada de lógica da aplicação, muitas vezes ligada ao banco de dados.
+- Só é acessada pelo controller, a view não tem acesso direto ao model
+
+Protocolo HTTP = Hypertext Transfer Protocolo
+
+                request
+                -----> 
+cliente/client - texto - servidor/server
+                <-----
+                response
+
+Na request alguns itens são sempre enviados na comunicação:
+- Path (url de acesso)
+- Método (indicando que tipo de solicitação)
+- Parametros (podem ser enviados pela url.)
+- Body (informações maiores usado em POST E PUT)
+Na response
+- Body (HTML, imagens, JSON)
+- Status da resposta (200, 404. 500)
+
+Métodos de comunicação
+GET = solicitar um recurso
+POST = enviar um recurso
+PUT = atualizar um recurso
+DELETE = deletar algum recurso

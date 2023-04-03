@@ -18,7 +18,7 @@ console.log(cockroachSpeed(1.09));
 function findDifference(a, b) {
   return Math.abs(
     a.reduce((previous, current) => previous * current) -
-      b.reduce((previous, current) => previous * current)
+    b.reduce((previous, current) => previous * current)
   );
 }
 console.log(findDifference([3, 2, 5], [1, 4, 4]));
@@ -93,3 +93,19 @@ function apple(x) {
   return Math.pow(x, 2 > 1000) ? 'It\'s hotter than the sun!!' : "Help yourself to a honeycomb Yorkie for the glovebox."
 }
 console.log(apple(100));
+
+// - Find Nearest square number
+// Your task is to find the nearest square number, nearest_sq(n) or nearestSq(n), of a positive integer n.
+// For example, if n = 111, then nearest\_sq(n) (nearestSq(n)) equals 121, since 111 is closer to 121, the square of 11, than 100, the square of 10.
+// If the n is already the perfect square (e.g. n = 144, n = 81, etc.), you need to just return n.
+
+function nearestSq(n) {
+  const root = Math.sqrt(n);
+  const lowerSquare = Math.floor(root) ** 2;
+  const upperSquare = Math.ceil(root) ** 2;
+  if (n - lowerSquare < upperSquare - n) {
+    return lowerSquare;
+  } else {
+    return upperSquare;
+  }
+}

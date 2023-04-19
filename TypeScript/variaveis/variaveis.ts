@@ -6,11 +6,11 @@
 let nome: string = "Muryllo"
 console.log(nome);
 
-// => Arrays [Type Annotations]
+// => Arrays [Type Annotations] - Lista de coisas
 let numeros: number[] = [1,2,3,4,5]
 console.log(numeros);
 
-// => Objetos [Type Annotations]
+// => Objetos [Type Annotations] - É uma coisa, é literalmente o nome, um objeto
 let carro: {
     nome: string,
     ano: number,
@@ -31,3 +31,17 @@ let big1: bigint = 9007199254740991n;
 console.log(big1);
 console.log(typeof(big1));
 
+// Tuple - Os dados devem respeitar a ordem dos seus tipos.
+const endereco: [string, number, string] = ['Rua dos alfeneiros', 4, 'Whinging']
+console.log(`Tipo tuple: ${typeof endereco} (${endereco})`);
+
+// Never
+function lancaExcecao():never {
+    throw new Error('Testando tipo never')
+}
+
+// Chama-se never por que esta função nunca é executada, graças ao erro que para tudo.
+const nunca = lancaExcecao()
+console.log(`Tipo never: ${typeof nunca} (${nunca})`);
+
+// Narrowing e Union Type

@@ -4,10 +4,10 @@
 // => Variáveis [Type Annotations]
 let nome = "Muryllo";
 console.log(nome);
-// => Arrays [Type Annotations]
+// => Arrays [Type Annotations] - Lista de coisas
 let numeros = [1, 2, 3, 4, 5];
 console.log(numeros);
-// => Objetos [Type Annotations]
+// => Objetos [Type Annotations] - É uma coisa, é literalmente o nome, um objeto
 let carro;
 carro = { nome: "Gol", ano: 2000, preco: 10000 };
 console.log(carro);
@@ -20,3 +20,12 @@ console.log(multiplicar(2, 3));
 let big1 = 9007199254740991n;
 console.log(big1);
 console.log(typeof (big1));
+// Tuple 
+const endereco = ['Rua dos alfeneiros', 4, 'Whinging'];
+console.log(`Tipo tuple: ${typeof endereco} (${endereco})`);
+// Never
+function lancaExcecao() {
+    throw new Error('Testando tipo never');
+}
+const nunca = lancaExcecao();
+console.log(`Tipo never: ${typeof nunca} (${nunca})`);

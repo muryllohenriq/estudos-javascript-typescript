@@ -22,10 +22,13 @@ function fetchApiData() {
 
 function postApiData() {
     fetch('https://reqres.in/api/users', {
+        // especifica o método da requisição
         method: 'POST',
+        // especifica o valor da requisição
         headers: {
             'Content-Type' : 'application/json'
         },
+        // body é o corpo da nossa requisição, e é aqui que fica o valor que vamos mandar e o JSON.stringify() converte os valores javascript para JSON
         body: JSON.stringify({
             name: 'Muryllo'
         })

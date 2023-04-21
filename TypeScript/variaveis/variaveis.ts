@@ -36,12 +36,43 @@ const endereco: [string, number, string] = ['Rua dos alfeneiros', 4, 'Whinging']
 console.log(`Tipo tuple: ${typeof endereco} (${endereco})`);
 
 // Never
-function lancaExcecao():never {
-    throw new Error('Testando tipo never')
-}
+// function lancaExcecao():never {
+//     throw new Error('Testando tipo never')
+// }
 
 // Chama-se never por que esta função nunca é executada, graças ao erro que para tudo.
-const nunca = lancaExcecao()
-console.log(`Tipo never: ${typeof nunca} (${nunca})`);
+// const nunca = lancaExcecao()
+// console.log(`Tipo never: ${typeof nunca} (${nunca})`);
 
-// Narrowing e Union Type
+// Enum
+
+enum Status {
+    Pendente = 'A',
+    Processando = 'B',
+    Processado = 'C'
+};
+
+const situacao1: Status = Status.Pendente;
+const situacao2: Status = Status.Processando;
+
+console.log(`Tipo Enum: ${typeof situacao1} (${situacao1})`);
+console.log(`Tipo Enum: ${typeof situacao2} (${situacao2})`);
+
+const mudaStatus = (preStatus: Status): Status => {
+    let posStatus: Status;
+    switch(preStatus) {
+        case Status.Pendente:
+            posStatus = Status.Processando;
+            break;
+            case Status.Processando:
+                posStatus = Status.Processado;
+                break;
+                default:
+                    posStatus = Status.Pendente;
+    }
+
+    return posStatus;
+}
+
+const novoStatus = mudaStatus(situacao1);
+console.log(`Tipo Enum: ${typeof novoStatus} (${novoStatus})`);

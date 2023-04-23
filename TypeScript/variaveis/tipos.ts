@@ -1,16 +1,16 @@
 // hierarquia de tipos: https://pbs.twimg.com/media/EudXrbDXUAQPV2P?format=jpg&name=medium
 
-// type annotation = :number, :string
+// type annotation = é os dois pontos ':' seguido do tipo especificado
 
-// => Variáveis [Type Annotations]
+// => Variáveis
 let nome: string = "Muryllo"
 console.log(nome);
 
-// => Arrays [Type Annotations] - Lista de coisas
+// => Arrays - Lista de coisas
 let numeros: number[] = [1,2,3,4,5]
 console.log(numeros);
 
-// => Objetos [Type Annotations] - É uma coisa, é literalmente o nome, um objeto
+// => Objetos - É uma coisa, é literalmente o nome, um objeto
 let carro: {
     nome: string,
     ano: number,
@@ -20,7 +20,7 @@ let carro: {
 carro = { nome: "Gol", ano: 2000, preco: 10000}
 console.log(carro);
 
-// => Função [Type Annotations]
+// => Função
 function multiplicar(num1: number, num2: number):number {
     return num1 * num2
 }
@@ -76,3 +76,35 @@ const mudaStatus = (preStatus: Status): Status => {
 
 const novoStatus = mudaStatus(situacao1);
 console.log(`Tipo Enum: ${typeof novoStatus} (${novoStatus})`);
+
+// Type Alias
+
+type Cliente = {
+    nome: string,
+    sobrenome: string
+}
+
+type Produto = {
+    descricao: string,
+    preco: number,
+    vendido: boolean
+}
+
+const cliente1: Cliente = {
+    nome: 'Muryllo',
+    sobrenome: 'Henrique'
+}
+
+const produto1: Produto = {
+    descricao: 'Ótimos fones',
+    preco: 1.500,
+    vendido: false
+}
+
+function mostrarObjeto(objeto: Cliente | Produto): Cliente | Produto {
+    console.log(objeto);
+    return objeto
+}
+
+mostrarObjeto(cliente1)
+mostrarObjeto(produto1)

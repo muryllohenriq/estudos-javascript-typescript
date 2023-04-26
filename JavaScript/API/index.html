@@ -11,8 +11,11 @@
         <button onclick="fetchApiData()">Clique aqui para preencher a lista</button>
         <ul id="fill_list"></ul>
         <button onclick="postApiData()">Clique aqui para cadastrar um usuário</button>
+        <button onclick="completedData()">Clique aqui para saber quais atividades você completou</button>
+        <ul id="completed"></ul>
     </main>
 
+    <!-- é recomendado colocar o script como a última parte do body, pois assim o script será rodado depois de todo o body ser montado, assim se ele precisar interagir com qualquer coisa acima dele, ele consegue -->
     <script src="./script.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-function fetchApiData() {
+const fetchApiData = () => {
     // não instancia o método pois o fetch usa por padrão o 'GET'
     // fetch() faz a promise, e .then() é o que fará depois de receber a promise.
     fetch('https://jsonplaceholder.typicode.com/todos/')
@@ -35,4 +35,18 @@ function postApiData() {
     })
     .then((response) => response.json())
     .then((data) => console.log(data))
+}
+
+const completedData = async () => {
+    const requisicao = await fetch('https://jsonplaceholder.typicode.com/todos/')
+    const result = await requisicao.json()
+
+    const list = document.querySelector('#completed')
+
+    result.map((item) => {
+        const li = document.createElement('li')
+
+        li.innerHTML = item.completed
+        list.appendChild(li)
+    })
 }

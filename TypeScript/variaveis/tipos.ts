@@ -7,7 +7,7 @@ let nome: string = "Muryllo"
 console.log(nome);
 
 // => Arrays - Lista de coisas
-let numeros: number[] = [1,2,3,4,5]
+let numeros: number[] = [1, 2, 3, 4, 5]
 console.log(numeros);
 
 // => Objetos - É uma coisa, é literalmente o nome, um objeto
@@ -17,19 +17,19 @@ let carro: {
     preco: number
 };
 
-carro = { nome: "Gol", ano: 2000, preco: 10000}
+carro = { nome: "Gol", ano: 2000, preco: 10000 }
 console.log(carro);
 
 // => Função
-function multiplicar(num1: number, num2: number):number {
+function multiplicar(num1: number, num2: number): number {
     return num1 * num2
 }
-console.log(multiplicar(2,3));
+console.log(multiplicar(2, 3));
 
 // bigint: números inteiros até ou maiores que 2 elevado a 53
 let big1: bigint = 9007199254740991n;
 console.log(big1);
-console.log(typeof(big1));
+console.log(typeof (big1));
 
 // Tuple - Os dados devem respeitar a ordem dos seus tipos.
 const endereco: [string, number, string] = ['Rua dos alfeneiros', 4, 'Whinging']
@@ -60,15 +60,15 @@ console.log(`Tipo Enum: ${typeof situacao2} (${situacao2})`);
 
 const mudaStatus = (preStatus: Status): Status => {
     let posStatus: Status;
-    switch(preStatus) {
+    switch (preStatus) {
         case Status.Pendente:
             posStatus = Status.Processando;
             break;
-            case Status.Processando:
-                posStatus = Status.Processado;
-                break;
-                default:
-                    posStatus = Status.Pendente;
+        case Status.Processando:
+            posStatus = Status.Processado;
+            break;
+        default:
+            posStatus = Status.Pendente;
     }
 
     return posStatus;
@@ -108,3 +108,165 @@ function mostrarObjeto(objeto: Cliente | Produto): Cliente | Produto {
 
 mostrarObjeto(cliente1)
 mostrarObjeto(produto1)
+
+// Type assertion = apenas trata como se fosse de um determinado tipo
+
+const valor: any = 123;
+console.log(`Type assertion: ${typeof valor} (${valor})`);
+const valorStr = (valor as string); // constata que é uma string e pra tratar com uma string, mas não muda o tipo, e o typescript influencia apenas no tempo de condificação e não no tempo de execução
+console.log(`Type assertion: ${typeof valorStr} (${valorStr})`);
+
+let valores = ['texto1', 123, true, []];
+valores[0] = 123;
+let valoresTuple = (valores as [string, number, boolean, never[]]);
+valoresTuple[0] = '123';
+
+// Interface = muito parecido com Type Alias, porém tem suas diferenças. type não pode ser modificado, interfaces sim, são muito mais reaproveitáveis
+
+interface Localizacao {
+    latitude: number
+    longitude: number
+}
+
+interface SerVivo {
+    nome: string
+}
+
+interface SerVivo {
+    idade: number
+}
+
+interface Vegetal extends SerVivo {
+    localizacao: Localizacao
+}
+
+interface Animal extends SerVivo {
+    peso: number
+}
+
+const criaSerVivo = (nome: string, idade: number, dtObito?: Date): SerVivo => {
+    return {
+        nome: nome,
+        idade: idade,
+        dtObito: dtObito,
+        morre(data: Date):void {
+            this.dtObito = data
+        }
+    };
+}
+
+const criaVegetal = (serVivo: SerVivo, localizacao: Localizacao): Vegetal => {
+    let vegetal = (serVivo as Vegetal);
+    vegetal.localizacao = localizacao;
+
+    return vegetal
+}
+
+const criaAnimal = (serVivo: SerVivo, peso: number): Animal => {
+    let animal = (serVivo as Animal);
+    animal.peso = peso;
+
+    return animal;
+}
+
+let person = criaSerVivo('eu', 1);
+person = criaAnimal(person, 3) as Animal;
+console.log(typeof person);
+
+let flor = criaSerVivo('rosa', 27);
+flor = criaVegetal(flor, {latitude: 3, longitude: 4}) as Vegetal;
+console.log(typeof flor);
+
+// Classes
+
+interface SerVivo{
+    dtObito?: Date;
+    morre(data: Date): void;
+}
+
+class Ser implements SerVivo { // implements obriga a class a lidar com as propriedades da interface
+    nome: string;
+    idade: number;
+    dtObito?: Date;
+
+    constructor(nome: string, idade: number) { // class sempre precisa ter um constructor para criar um objeto. constructor é uma função que roda sempre que você cria um novo objeto
+        this.nome = nome; // this. pra instanciar o que está fora do método, sem o this. propriedades que estão dentro do método
+        this.idade = idade;
+    }
+
+    morre(data: Date):void {
+        this.dtObito = data
+    }
+}
+
+// const ser = new Ser('oi', 10);
+// ser.morre(new Date())
+
+class serAnimal implements Animal {
+    nome: string;
+    idade: number;
+    dtObito?: Date;
+    peso: number;
+
+    constructor(serVivo: SerVivo, peso: number) {
+        this.nome = serVivo.nome;
+        this.idade = serVivo.idade;
+        this.peso = peso
+    }
+
+    morre(data: Date):void {
+        this.dtObito = data
+    }
+}
+
+class serVegetal implements Vegetal {
+    nome: string;
+    idade: number;
+    dtObito?: Date;
+    localizacao: Localizacao;
+
+    constructor(serVivo: SerVivo, localizacao: Localizacao) {
+        this.nome = serVivo.nome;
+        this.idade = serVivo.idade;
+        this.localizacao = localizacao
+    }
+
+    morre(data: Date):void {
+        this.dtObito = data
+    }
+}
+
+const serGato = new Ser('beto', 1);
+const gato = new serAnimal(serGato, 3);
+
+const serMargarida = new Ser('margarida', 1);
+const margarida = new serVegetal(serMargarida, {latitude: 5, longitude: 2});
+
+gato.morre(new Date());
+margarida.morre(new Date());
+
+console.log(gato);
+console.log(margarida);
+
+// Herança
+
+class SerAnimal1 extends Ser implements Animal {
+    peso: number;
+
+    constructor(nome: string, idade: number, peso: number) {
+        super(nome, idade); // o super deve ser o primeiro a ser chamado para preencher a classe pai
+        this.peso = peso;
+    }
+}
+
+class SerVegetal1 extends Ser implements Vegetal {
+    localizacao: Localizacao;
+
+    constructor(nome: string, idade: number, localizacao: Localizacao) {
+        super(nome, idade); 
+        this.localizacao = localizacao;
+    }
+}
+
+const galinha = new SerAnimal1('galinha', 1, 2);
+const katniss = new SerVegetal1('katniss', 17, {latitude: 1, longitude: 2});

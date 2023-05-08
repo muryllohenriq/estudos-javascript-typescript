@@ -147,3 +147,53 @@ gato.morre(new Date());
 margarida.morre(new Date());
 console.log(gato);
 console.log(margarida);
+// Herança. Herda tudo da classe pai e pode modificar aquilo que você quiser
+class SerAnimal1 extends Ser {
+    constructor(nome, idade, peso) {
+        super(nome, idade); // o super deve ser o primeiro a ser chamado para preencher a classe pai
+        this.peso = peso;
+    }
+}
+class SerVegetal1 extends Ser {
+    constructor(nome, idade, localizacao) {
+        super(nome, idade);
+        this.localizacao = localizacao;
+    }
+}
+const galinha = new SerAnimal1('galinha', 1, 2);
+const katniss = new SerVegetal1('katniss', 17, { latitude: 1, longitude: 2 });
+galinha.morre(new Date());
+katniss.morre(new Date());
+console.log(galinha);
+console.log(katniss);
+class Ser2 {
+    constructor(nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+    morre(data) {
+        this.dtObito = data;
+    }
+    mudaNome(nome) {
+        this.nome = nome;
+    }
+}
+class SerAnimal2 extends Ser2 {
+    constructor(nome, idade, peso) {
+        super(nome, idade);
+        this.peso = peso;
+    }
+}
+class SerVegetal2 extends Ser2 {
+    constructor(localizacao, idade, nome) {
+        super(nome, idade);
+        this.localizacao = localizacao;
+    }
+}
+const cachorro = new SerAnimal2('dog', 10, 200);
+const prim = new SerVegetal2({ latitude: 4, longitude: 10 }, 10, 'prim');
+cachorro.mudaNome('gato');
+cachorro.morre(new Date());
+prim.morre(new Date);
+console.log(cachorro);
+console.log(prim);

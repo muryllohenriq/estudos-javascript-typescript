@@ -121,7 +121,7 @@ valores[0] = 123;
 let valoresTuple = (valores as [string, number, boolean, never[]]);
 valoresTuple[0] = '123';
 
-// Interface = muito parecido com Type Alias, porém tem suas diferenças. type não pode ser modificado, interfaces sim, são muito mais reaproveitáveis
+// Interface = muito parecido com Type Alias, porém tem suas diferenças. type não pode ser modificado, interfaces sim, são muito mais reaproveitáveis. Interfaces são apenas uma definição de como uma coisa deve ser/é. O que se coloca em uma interface é público, não pode private nem protected, por isso geralmente nas interfaces temos os métodos e não as propriedades.
 
 interface Localizacao {
     latitude: number
@@ -177,7 +177,7 @@ let flor = criaSerVivo('rosa', 27);
 flor = criaVegetal(flor, {latitude: 3, longitude: 4}) as Vegetal;
 console.log(typeof flor);
 
-// Classes
+// Classes. Já classes falam como uma coisa é e como ela se comporta. Os métodos são comportamentos. Uma classe implemente uma interface
 
 interface SerVivo{
     dtObito?: Date;
@@ -248,7 +248,7 @@ margarida.morre(new Date());
 console.log(gato);
 console.log(margarida);
 
-// Herança
+// Herança. Herda tudo da classe pai e pode modificar aquilo que você quiser
 
 class SerAnimal1 extends Ser implements Animal {
     peso: number;
@@ -270,3 +270,68 @@ class SerVegetal1 extends Ser implements Vegetal {
 
 const galinha = new SerAnimal1('galinha', 1, 2);
 const katniss = new SerVegetal1('katniss', 17, {latitude: 1, longitude: 2});
+
+galinha.morre(new Date());
+katniss.morre(new Date());
+
+console.log(galinha);
+console.log(katniss);
+
+// Modificadores de acesso
+
+interface SerVivo2 {
+    morre(data: Date): void
+}
+
+interface Vegetal2 extends SerVivo2 {
+    localizacao: Localizacao
+}
+
+interface Animal2 extends SerVivo2 {
+    peso: number
+}
+
+class Ser2 implements SerVivo2 {
+    dtObito?: Date;
+
+    constructor(private nome: string, protected idade: number) { // private = só pode ser usado dentro das chaves, nem nas classes que herdarem essa classe; protected = pode ser usado na classe e nos seus filhos apenas.
+    }
+
+    morre(data: Date): void{
+        this.dtObito = data;
+    }
+
+    mudaNome(nome: string) { // com uma função da pra você alterar o valor do private de fora
+        this.nome = nome;
+    }
+}
+
+class SerAnimal2 extends Ser2 implements Animal2 {
+    peso: number;
+    
+    constructor(nome: string, idade: number, peso: number) {
+        super(nome, idade);
+        this.peso = peso;
+    }
+}
+
+class SerVegetal2 extends Ser2 implements Vegetal2 {
+    localizacao: Localizacao;
+
+    constructor(localizacao: Localizacao, idade: number, nome: string) {
+        super(nome, idade);
+        this.localizacao = localizacao;
+    }
+}
+
+const cachorro = new SerAnimal2('dog', 10, 200);
+const prim = new SerVegetal2({latitude: 4, longitude: 10}, 10, 'prim');
+
+cachorro.mudaNome('gato')
+
+cachorro.morre(new Date());
+prim.morre(new Date);
+
+console.log(cachorro);
+console.log(prim);
+

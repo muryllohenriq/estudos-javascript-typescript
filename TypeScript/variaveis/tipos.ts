@@ -335,3 +335,4 @@ prim.morre(new Date);
 console.log(cachorro);
 console.log(prim);
 
+// "abstract" é uma classe de modelo que só serve para ser herdada e não instanciada

@@ -1,3 +1,5 @@
+// pasta clients = pasta de domínio do cliente
+
 import { CommonRoutesConfig } from "../common/common.routes.config";
 // import ClientsController from './controllers/clients.controller';
 // import ClientsMiddleware from './middlewares/clients.middleware';
@@ -9,6 +11,7 @@ export class ClientsRoutes extends CommonRoutesConfig {
     }
 
     configureRoutes(): express.Application {
+        // criação de rotas do cliente com dados específicos do cliente
         this.app.route(`/clients`)
             .get((req: express.Request, res: express.Response) => {
                 res.status(200).send(`Lista de clientes`);

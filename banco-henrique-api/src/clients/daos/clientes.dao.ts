@@ -1,3 +1,5 @@
+// dao (data access object) = design pattern (padrão de projeto) relacionado a banco de dados, aqui começa a ter relação com o banco de dados
+
 import { ClienteDTO } from "../dtos/cliente.dto";
 import debug from "debug";
 

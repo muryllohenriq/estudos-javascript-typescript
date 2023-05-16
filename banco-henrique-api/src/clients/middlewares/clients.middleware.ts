@@ -1,3 +1,5 @@
+// middlewares = executam em todas as requisições, faz algumas verificações
+
 import express from 'express';
 import clientsService from '../services/clients.service';
 import debug from 'debug';

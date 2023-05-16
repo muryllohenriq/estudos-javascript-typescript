@@ -1,4 +1,4 @@
-// pasta common = tudo que pode ser compartilhado entre clientes e outras entidades do sistema
+// pasta common = tudo que pode ser compartilhado entre clientes e outras entidades do sistema, que não é específico
 
 import  express  from "express";
 // estrutura de criação de rotas, sempre terá a mesma estrutura

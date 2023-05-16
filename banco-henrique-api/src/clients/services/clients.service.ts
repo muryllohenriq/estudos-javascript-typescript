@@ -1,3 +1,5 @@
+// services = é o prestador de serviços do negócio, aqui ficam as regras de negócio
+
 import ClientesDao from "../daos/clientes.dao";
 import { CRUD } from "../../common/interfaces/crud.interface";
 import { ClienteDTO } from "../dtos/cliente.dto";

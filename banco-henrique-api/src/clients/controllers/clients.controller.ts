@@ -1,3 +1,5 @@
+// controllers = receber uma requisição e direcionar ela, ele não deve tomar decisão ou fazer uma operação. é como se fosse o porteiro
+
 import express from 'express';
 import clientsService from '../services/clients.service';
 import debug from 'debug';

@@ -1,6 +1,7 @@
 class DBConnect {
 
     // static = propriedades que você não precisa dar "new" para utilizar
+    // '_'(underline) antes do nome pra identificar propriedades com restrições de acesso
     private static _instance: DBConnect;
 
     private constructor(){
@@ -18,38 +19,32 @@ class DBConnect {
 }
 
 class ClientDao {
-    // '_'(underline) antes do nome pra identificar propriedades com restrições de acesso
+    
     private _db: DBConnect;
+    private static _instance: ClientDao;
 
-    constructor(){
+    private constructor(){
         this._db = DBConnect.getInstance();
+        console.log('Novo dao');
+    }
+
+    public static getInstance(): ClientDao {
+        if(!ClientDao._instance){
+            ClientDao._instance = new ClientDao();
+        }
+
+        return ClientDao._instance
     }
 }
 
 function cadastraUsuario(){
-    let clientDao: ClientDao = new ClientDao;
+    let clientDao: ClientDao = ClientDao.getInstance()
 }
 
 function atualizaUsuario(){
-    let clientDao: ClientDao = new ClientDao;
+    let clientDao: ClientDao = ClientDao.getInstance()
 }
 
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
-cadastraUsuario()
-atualizaUsuario()
 cadastraUsuario()
 atualizaUsuario()
 cadastraUsuario()

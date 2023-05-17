@@ -15,13 +15,20 @@ class DBConnect {
 class ClientDao {
     constructor() {
         this._db = DBConnect.getInstance();
+        console.log('Novo dao');
+    }
+    static getInstance() {
+        if (!ClientDao._instance) {
+            ClientDao._instance = new ClientDao();
+        }
+        return ClientDao._instance;
     }
 }
 function cadastraUsuario() {
-    let clientDao = new ClientDao;
+    let clientDao = ClientDao.getInstance();
 }
 function atualizaUsuario() {
-    let clientDao = new ClientDao;
+    let clientDao = ClientDao.getInstance();
 }
 cadastraUsuario();
 atualizaUsuario();

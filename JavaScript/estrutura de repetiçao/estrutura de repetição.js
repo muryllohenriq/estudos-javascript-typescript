@@ -20,10 +20,21 @@ do {
 } while (c <= 20)
 */
 
-/* for 
-console.log('Vai começar...')
-for(var c = 1;c <= 4;c++) {
-    console.log(c)
+//  for 
+
+let valores = [8, 1, 7, 4, 2, 9]
+console.log(valores)
+
+for(let i = 0; i < valores.length; i++) {
+    console.log(`A posição ${i} tem o valor ${valores[i]}`)
 }
-console.log('FIM!')
-*/
+
+for(let indice in valores) {
+    console.log(`A posição ${indice} tem o valor ${valores[indice]}`)  
+}
+
+for (let elemento of valores) {
+    console.log(elemento);
+}
+
+// "of" percorre os elementos do array, "in" percorre os índices
